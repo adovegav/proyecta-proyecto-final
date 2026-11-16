@@ -1,6 +1,14 @@
 # Preparar PostgreSQL
 
-Versión elegida: PostgreSQL 18. Se verificó el cliente 18.7 en `C:\Program Files\PostgreSQL\18\bin` y un servidor aceptando conexiones en `localhost:5432`. La versión del servidor se confirmará mediante `SELECT version();` al autenticar. El nombre del servicio puede conservar una versión anterior: comprobar su configuración antes de identificarlo por el nombre.
+Versión elegida y verificada por conexión: PostgreSQL 18.7 en `localhost:5433`. Base `gestor_proyectos` creada y conexión del backend comprobada. PostgreSQL 15 permanece en el puerto 5432. Las instancias y sus datos son independientes; no se realizó migración de datos de 15 a 18.
+
+La instancia 18 se inició con `pg_ctl`, limitada a localhost, sin registrar un servicio Windows. Después de reiniciar el equipo, ejecutar desde la raíz:
+
+```powershell
+.\scripts\iniciar-postgres18.ps1
+```
+
+Este script usa el clúster existente en `C:\Program Files\PostgreSQL\18\data`, puerto 5433 y logs en `.tools/postgres18.log`. No inicializa ni elimina datos. En este equipo el backend usa el usuario `postgres` con la contraseña local configurada en `.env`. Los pasos de creación siguientes son para instalaciones nuevas con usuario dedicado.
 
 ## 1. Servicio
 
@@ -27,8 +35,8 @@ $env:Path = "C:\Program Files\PostgreSQL\18\bin;$env:Path"
 Crear usuario sin privilegios de superusuario y base propia. Los comandos solicitan contraseñas interactivamente: la del nuevo usuario y la del administrador `postgres` según corresponda. No hace falta compartirlas en el chat.
 
 ```powershell
-createuser -h localhost -p 5432 -U postgres -W -P --no-superuser --no-createdb --no-createrole gestor_app
-createdb -h localhost -p 5432 -U postgres -W --owner=gestor_app gestor_proyectos
+createuser -h localhost -p 5433 -U postgres -W -P --no-superuser --no-createdb --no-createrole gestor_app
+createdb -h localhost -p 5433 -U postgres -W --owner=gestor_app gestor_proyectos
 ```
 
 Ejecutar una vez. Si los nombres ya existen, revisar los objetos existentes antes de continuar; no borrar bases para repetir estos pasos. También se puede crear el rol de login y la base con propietario `gestor_app` desde pgAdmin.
@@ -39,13 +47,13 @@ En `backend/.env` configurar:
 
 ```dotenv
 PGHOST=localhost
-PGPORT=5432
+PGPORT=5433
 PGDATABASE=gestor_proyectos
 PGUSER=gestor_app
 PGPASSWORD="tu_contraseña_local"
 ```
 
-Usar el puerto real de tu instancia si difiere de 5432. `.env` está excluido de Git. No colocar credenciales de PostgreSQL en frontend.
+Usar el puerto real de tu instancia si difiere de 5433. Una instalación estándar puede usar 5432; este proyecto usa 5433 para evitar conflicto con PostgreSQL 15. `.env` está excluido de Git. No colocar credenciales de PostgreSQL en frontend.
 
 Desde la raíz:
 
