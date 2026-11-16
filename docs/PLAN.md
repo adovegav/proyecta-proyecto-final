@@ -4,7 +4,7 @@
 
 Gestor de proyectos y tareas para un usuario autenticado. Permite registrar proyectos y administrar sus tareas. Es una propuesta inicial modificable antes de implementar el dominio. Estimación orientativa: 20–28 horas, según experiencia; no hay fecha de entrega indicada.
 
-Tecnologías: React con JavaScript y React Router; CSS Grid y Flexbox; Fetch; Node 24 LTS y Express; SQLite con el módulo integrado `node:sqlite`; contraseñas con bcryptjs y autenticación JWT con jsonwebtoken. No se requiere Docker ni servidor de base de datos separado. Dependencias resueltas registradas en los lockfiles: usar `npm ci`.
+Tecnologías: React con JavaScript y React Router; CSS Grid y Flexbox; Fetch; Node 24 LTS y Express; PostgreSQL con el cliente `pg` y un pool de conexiones; contraseñas con bcryptjs y autenticación JWT con jsonwebtoken. Se requiere un servidor PostgreSQL local. Docker es opcional. Dependencias resueltas registradas en los lockfiles: usar `npm ci`.
 
 ## Modelo y reglas
 
@@ -12,7 +12,7 @@ Tecnologías: React con JavaScript y React Router; CSS Grid y Flexbox; Fetch; No
 - Proyecto: id, owner_id (FK usuario), nombre obligatorio, descripción, fecha de creación.
 - Tarea: id, project_id (FK proyecto), título obligatorio, descripción, estado (`pendiente`, `en_progreso`, `completada`), fecha de creación.
 - Un usuario administra únicamente sus proyectos y las tareas de estos. Validar pertenencia en backend para listas, consultas y modificaciones.
-- Activar claves foráneas SQLite. Rechazar con 409 la eliminación de un proyecto con tareas; mostrar el motivo en frontend.
+- Definir claves foráneas PostgreSQL con restricciones de integridad. Rechazar con 409 la eliminación de un proyecto con tareas; mostrar el motivo en frontend.
 - Validar identificadores, campos, longitudes, estados y existencia del proyecto padre. Usar SQL parametrizado.
 - Crear usuario de demostración mediante script que lea credenciales desde variables de entorno y guarde únicamente el hash. No publicar contraseñas reales.
 
@@ -58,7 +58,7 @@ Cada fila representa un incremento verificable. No crear commits vacíos para co
 | --- | --- | --- | --- |
 | 1 | `chore: preparar estructura y plan de entrega` | Revisar documentos y exclusiones Git | 1 |
 | 2 | `chore: preparar entorno y conexion REST base` | Build y health por Fetch | 1 |
-| 3 | `feat: crear esquema SQLite e inicializacion` | Base desde cero, FK y persistencia | 2 |
+| 3 | `feat: crear esquema PostgreSQL e inicializacion` | Base desde cero, FK y persistencia | 2 |
 | 4 | `feat: implementar login y autorizacion` | Login válido/inválido, token y pertenencia | 3 |
 | 5 | `feat: implementar CRUD de proyectos` | Cinco métodos, errores y propietario | 2 |
 | 6 | `feat: implementar CRUD de tareas relacionadas` | Cinco métodos, FK y pertenencia | 2 |

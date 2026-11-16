@@ -5,15 +5,16 @@ Preparación del trabajo final (45 puntos). Propuesta de dominio: proyectos (pad
 ## Estructura
 
 - `frontend/`: proyecto independiente React, HTML5, CSS3 y Vite.
-- `backend/`: proyecto independiente Node.js y Express; SQLite previsto mediante `node:sqlite`.
+- `backend/`: proyecto independiente Node.js y Express; PostgreSQL mediante `pg`.
 - `docs/PLAN.md`: alcance, arquitectura, fases y estrategia Git.
 - `docs/VERIFICACION.md`: criterios de aceptación y entregables.
 - `docs/VIDEO.md`: guion de demostración.
+- `docs/POSTGRESQL.md`: creación del usuario y la base, configuración y comprobación de conexión.
 - `scripts/activar-entorno.ps1`: activa Node portable en la terminal actual.
 
 ## Preparar y ejecutar (Windows / PowerShell)
 
-Requisitos: Git y Node.js 24 LTS con npm. La instalación portable local está ignorada por Git y no se distribuye: al clonar el repositorio se debe instalar Node 24. La versión usada queda en `.nvmrc`. No se necesita instalar un servidor de base de datos para SQLite.
+Requisitos: Git y Node.js 24 LTS con npm. La instalación portable local está ignorada por Git y no se distribuye: al clonar el repositorio se debe instalar Node 24. La versión usada queda en `.nvmrc`. Se requiere PostgreSQL; ver `docs/POSTGRESQL.md` para preparar usuario, base y conexión.
 
 Desde la raíz, en **cada terminal**:
 
@@ -73,4 +74,4 @@ La carpeta raíz reúne ambos proyectos en un repositorio; cada uno mantiene su 
 
 ## Entrega final
 
-Seguir `docs/VERIFICACION.md`. No entregar esta base como trabajo terminado. La guía debe ampliarse con inicialización SQLite, creación de usuario y comandos reales de pruebas cuando estén implementados.
+Seguir `docs/VERIFICACION.md`. No entregar esta base como trabajo terminado. La guía debe ampliarse con inicialización PostgreSQL, creación de usuario y comandos reales de pruebas cuando estén implementados.

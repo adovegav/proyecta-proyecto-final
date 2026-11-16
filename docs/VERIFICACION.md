@@ -6,7 +6,7 @@
 - [x] Base React con HTML5 semántico, CSS Grid/Flexbox y Fetch a API.
 - [x] Backend base con CORS y health.
 - [ ] Login funcional y cierre de sesión; JWT validado en backend.
-- [ ] SQLite persistente, inicialización reproducible y usuario de demostración.
+- [ ] PostgreSQL persistente, inicialización reproducible y usuario de demostración.
 - [ ] Diez rutas CRUD de proyectos y tareas, incluyendo consulta individual.
 - [ ] Autorización por propietario; ningún acceso a recursos de otro usuario.
 - [ ] Seis tipos de pantalla completos, ocho rutas frontend.

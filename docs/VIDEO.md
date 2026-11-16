@@ -4,7 +4,7 @@ Duración orientativa: 10–15 minutos, ajustable a lo que indique el docente. N
 
 1. Presentación: objetivo, React + API REST, dos proyectos y relación proyecto/tareas.
 2. Mostrar repositorio GitHub, ramas y commits. Mostrar carpetas y archivos de ejemplo sin exponer secretos.
-3. Desde una copia limpia: verificar Node/Git, instalar paquetes backend y frontend con `npm ci`, copiar y configurar `.env`, inicializar SQLite y crear usuario con los comandos que se implementen.
+3. Desde una copia limpia: verificar Node/Git, instalar paquetes backend y frontend con `npm ci`, copiar y configurar `.env`, inicializar PostgreSQL y crear usuario con los comandos que se implementen.
 4. Iniciar ambos procesos; explicar puertos, CORS y URL de API.
 5. Pantalla 1, login: mostrar error de contraseña y autenticación correcta.
 6. Pantalla 2, dashboard: explicar contadores obtenidos desde API.
