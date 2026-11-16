@@ -1,19 +1,19 @@
 # Preparar PostgreSQL
 
-En este equipo se detectó PostgreSQL 15.1 en `C:\Program Files\PostgreSQL\15`. Servicio Windows: `postgresql-x64-15`. No es necesario reinstalar para comenzar. Antes de la entrega conviene actualizar a la última revisión de la versión mayor elegida.
+Versión elegida: PostgreSQL 18. Se verificó el cliente 18.7 en `C:\Program Files\PostgreSQL\18\bin` y un servidor aceptando conexiones en `localhost:5432`. La versión del servidor se confirmará mediante `SELECT version();` al autenticar. El nombre del servicio puede conservar una versión anterior: comprobar su configuración antes de identificarlo por el nombre.
 
 ## 1. Servicio
 
 Comprobar desde PowerShell:
 
 ```powershell
-Get-Service postgresql-x64-15
+Get-Service -Name '*postgres*'
 ```
 
 Si está detenido, iniciar desde Servicios de Windows o PowerShell con permisos de administrador:
 
 ```powershell
-Start-Service postgresql-x64-15
+Start-Service -Name NOMBRE_DEL_SERVICIO
 ```
 
 ## 2. Usuario y base dedicados
@@ -21,7 +21,7 @@ Start-Service postgresql-x64-15
 Agregar las herramientas a la terminal actual:
 
 ```powershell
-$env:Path = "C:\Program Files\PostgreSQL\15\bin;$env:Path"
+$env:Path = "C:\Program Files\PostgreSQL\18\bin;$env:Path"
 ```
 
 Crear usuario sin privilegios de superusuario y base propia. Los comandos solicitan contraseñas interactivamente: la del nuevo usuario y la del administrador `postgres` según corresponda. No hace falta compartirlas en el chat.
@@ -71,4 +71,4 @@ El pool y el comando de comprobación están preparados. El esquema de tablas, m
 - `3D000`: crear la base o corregir `PGDATABASE`.
 - Comando `psql` no reconocido: agregar la carpeta `bin` al PATH temporal como se indica arriba.
 
-Referencias: [conexiones node-postgres](https://node-postgres.com/features/connecting), [createuser](https://www.postgresql.org/docs/15/app-createuser.html), [createdb](https://www.postgresql.org/docs/15/app-createdb.html).
+Referencias: [conexiones node-postgres](https://node-postgres.com/features/connecting), [createuser](https://www.postgresql.org/docs/18/app-createuser.html), [createdb](https://www.postgresql.org/docs/18/app-createdb.html).
