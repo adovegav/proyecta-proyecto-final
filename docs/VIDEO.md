@@ -1,6 +1,6 @@
 # Guion del video
 
-Video generado: `artifacts/entrega/demostracion-proyecta.mp4`. Incluye instalación real en copia limpia y las seis pantallas con explicaciones escritas en español, sin narración de voz. El índice `VIDEO_CAPITULOS.json` registra los tiempos. No se especificó duración obligatoria.
+Video generado y verificado: `artifacts/entrega/demostracion-proyecta.mp4`. Duración: 3 minutos y 18 segundos, 1280 × 900, H.264. Incluye instalación real en copia limpia y las seis pantallas con explicaciones escritas en español, sin narración de voz. El índice `VIDEO_CAPITULOS.json` registra los tiempos. Se decodificó el MP4 completo sin errores y se revisaron fotogramas de las seis pantallas. No se especificó duración obligatoria.
 
 1. Presentación: objetivo, React + API REST, dos proyectos y relación proyecto/tareas.
 2. Mostrar repositorio GitHub, ramas y commits. Mostrar carpetas y archivos de ejemplo sin exponer secretos.

@@ -45,6 +45,8 @@ Las instalaciones npm realizadas reportaron cero vulnerabilidades. Esto refleja 
 
 La herramienta de video copia fuentes sin node_modules ni `.env`, ejecuta `npm ci` para ambos proyectos, genera configuración, comprueba conexión, aplica migración y seed en una base PostgreSQL 18 temporal y ejecuta el build. Después graba los flujos de UI sobre los servidores locales de la aplicación. La base temporal se elimina al finalizar la grabación; los datos demo de la aplicación se conservan.
 
+Además se extrajeron `backend.zip` y `frontend.zip` en `.tools/entrega-verificada`, se instaló con `npm ci`, se aplicaron migración y seed dos veces para comprobar repetibilidad, se ejecutaron las diez pruebas y el build desde esos archivos. La API del ZIP inició en puerto 3001 y, tras detenerla y volverla a iniciar, autenticó al usuario y recuperó los tres proyectos persistentes. Resultado: instalación de los ZIP y persistencia tras reinicio aprobadas.
+
 ## Límites
 
 No se simularon carga masiva, navegadores antiguos ni despliegue de producción. Las pruebas verifican un entorno local de ejecución. El video presenta explicaciones escritas, sin voz. El repositorio contiene fuentes y guías; las dependencias, secretos y archivos locales de entrega se excluyen del historial Git.

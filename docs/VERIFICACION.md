@@ -12,10 +12,10 @@
 - [x] Seis tipos de pantalla completos, ocho rutas frontend.
 - [x] Dashboard y todos los datos dinámicos desde API.
 - [x] Errores, carga, formularios accesibles y vista móvil.
-- [ ] main, develop y feature visibles en GitHub.
-- [ ] Al menos diez commits lógicos subidos.
-- [ ] Guía final contrastada con instalación desde cero.
-- [ ] Video con instalación, configuración, seis pantallas y CRUD.
+- [ ] main, develop y feature visibles en GitHub (verificar tras publicación final).
+- [ ] Al menos diez commits lógicos subidos (historial local completo; verificar remoto al publicar).
+- [x] Guía final contrastada con instalación desde cero y ZIP extraídos.
+- [x] Video con instalación, configuración, seis pantallas y CRUD.
 
 ## Pruebas a realizar durante el desarrollo
 
