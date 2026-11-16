@@ -68,7 +68,7 @@ Resultado esperado: `Conexión PostgreSQL correcta` con nombre de base y usuario
 
 ## Alcance actual
 
-El pool y el comando de comprobación están preparados. El esquema de tablas, migraciones y creación de usuario de la aplicación siguen pendientes. El usuario PostgreSQL `gestor_app` es distinto del usuario que iniciará sesión en la página.
+El pool, el esquema relacional, las migraciones y el usuario de demostración están implementados. Ejecutar `npm run setup`, configurar `.env`, y luego `npm run db:migrate` y `npm run db:seed` desde backend. El usuario PostgreSQL `gestor_app` es distinto del usuario que iniciará sesión en la página. En el equipo actual se utiliza `postgres` para conexión local, como fue solicitado.
 
 `GET /api/health` comprueba únicamente el proceso HTTP; no confirma conexión con PostgreSQL. Usar `db:check` para verificar la base.
 

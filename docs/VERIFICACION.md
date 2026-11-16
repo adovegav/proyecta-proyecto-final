@@ -5,13 +5,13 @@
 - [x] Carpetas frontend/backend con manifests y ejecución separados.
 - [x] Base React con HTML5 semántico, CSS Grid/Flexbox y Fetch a API.
 - [x] Backend base con CORS y health.
-- [ ] Login funcional y cierre de sesión; JWT validado en backend.
-- [ ] PostgreSQL persistente, inicialización reproducible y usuario de demostración.
-- [ ] Diez rutas CRUD de proyectos y tareas, incluyendo consulta individual.
-- [ ] Autorización por propietario; ningún acceso a recursos de otro usuario.
-- [ ] Seis tipos de pantalla completos, ocho rutas frontend.
-- [ ] Dashboard y todos los datos dinámicos desde API.
-- [ ] Errores, carga, formularios accesibles y vista móvil.
+- [x] Login funcional y cierre de sesión; JWT validado en backend.
+- [x] PostgreSQL persistente, inicialización reproducible y usuario de demostración.
+- [x] Diez rutas CRUD de proyectos y tareas, incluyendo consulta individual.
+- [x] Autorización por propietario; ningún acceso a recursos de otro usuario.
+- [x] Seis tipos de pantalla completos, ocho rutas frontend.
+- [x] Dashboard y todos los datos dinámicos desde API.
+- [x] Errores, carga, formularios accesibles y vista móvil.
 - [ ] main, develop y feature visibles en GitHub.
 - [ ] Al menos diez commits lógicos subidos.
 - [ ] Guía final contrastada con instalación desde cero.

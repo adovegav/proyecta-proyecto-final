@@ -2,15 +2,15 @@
 
 ## Alcance propuesto
 
-Gestor de proyectos y tareas para un usuario autenticado. Permite registrar proyectos y administrar sus tareas. Es una propuesta inicial modificable antes de implementar el dominio. Estimación orientativa: 20–28 horas, según experiencia; no hay fecha de entrega indicada.
+Gestor de proyectos y tareas implementado para usuarios autenticados. Permite registrar proyectos y administrar sus tareas, aislados por propietario. Este documento conserva la planificación inicial y refleja las decisiones finales. No se indicó fecha límite de entrega.
 
 Tecnologías: React con JavaScript y React Router; CSS Grid y Flexbox; Fetch; Node 24 LTS y Express; PostgreSQL con el cliente `pg` y un pool de conexiones; contraseñas con bcryptjs y autenticación JWT con jsonwebtoken. Se requiere un servidor PostgreSQL local. Docker es opcional. Dependencias resueltas registradas en los lockfiles: usar `npm ci`.
 
 ## Modelo y reglas
 
 - Usuario: id, email único, password_hash y fecha de creación.
-- Proyecto: id, owner_id (FK usuario), nombre obligatorio, descripción, fecha de creación.
-- Tarea: id, project_id (FK proyecto), título obligatorio, descripción, estado (`pendiente`, `en_progreso`, `completada`), fecha de creación.
+- Proyecto: id, owner_id (FK usuario), nombre obligatorio, descripción, estado (`planning`, `active`, `completed`), fechas de creación y actualización.
+- Tarea: id, project_id (FK proyecto), título obligatorio, descripción, estado (`pending`, `in_progress`, `completed`), prioridad (`low`, `medium`, `high`), fecha límite opcional y fechas de creación y actualización. Las etiquetas visibles se traducen al español desde los metadatos de la API.
 - Un usuario administra únicamente sus proyectos y las tareas de estos. Validar pertenencia en backend para listas, consultas y modificaciones.
 - Definir claves foráneas PostgreSQL con restricciones de integridad. Rechazar con 409 la eliminación de un proyecto con tareas; mostrar el motivo en frontend.
 - Validar identificadores, campos, longitudes, estados y existencia del proyecto padre. Usar SQL parametrizado.
@@ -46,7 +46,7 @@ Prefijo `/api`. JSON como formato de intercambio. Las siguientes diez rutas requ
 | PUT | `/tasks/:id` | Actualizar (200/404) |
 | DELETE | `/tasks/:id` | Eliminar (204/404) |
 
-Adicionales: `POST /auth/login` (público), `GET /auth/me` y `GET /dashboard` (protegidos). `GET /health` público ya implementado para verificar conectividad.
+Adicionales: `POST /auth/login` (público), `GET /auth/me`, `GET /dashboard` y `GET /meta` (protegidos). `GET /health` público para verificar conectividad HTTP.
 
 Login recibe `{email, password}` y devuelve `{token, user}`. Token con vencimiento; para este alcance guardarlo en memoria y solicitar login al recargar. Backend verifica firma y expiración. Credenciales inválidas o token ausente/expirado: 401. Recurso ajeno: 404 para no revelar su existencia. Validaciones: 400; acción sin privilegios si se incorporan roles: 403. Errores JSON `{message}`. Nunca confiar solo en rutas protegidas del navegador.
 
@@ -69,14 +69,14 @@ Cada fila representa un incremento verificable. No crear commits vacíos para co
 | 11 | `test: verificar autenticacion y CRUD relacionados` | Pruebas de integración y correcciones | 3 |
 | 12 | `docs: completar guia video y entrega` | Instalación limpia, ZIP y video | 3 |
 
-Los dos primeros incrementos corresponden a esta preparación. Los restantes se harán al desarrollar la aplicación. La evaluación no asigna puntos individuales por criterio: no se inventa un reparto de los 45 puntos.
+Los incrementos funcionales están implementados y guardados en commits reales. Se añadieron incrementos para adaptar el entorno a PostgreSQL 18 y verificar el funcionamiento. La evaluación no asigna puntos individuales por criterio: no se inventa un reparto de los 45 puntos. El historial Git refleja los incrementos efectivos.
 
 ## Flujo Git
 
-`main`: versiones estables. `develop`: integración. `feature/base-proyecto`: base actual. Crear siguientes ramas desde develop, por ejemplo `feature/autenticacion`, `feature/proyectos` y `feature/tareas`.
+`main`: versión estable. `develop`: integración. `feature/base-proyecto`: implementación del proyecto y sus incrementos. Las tres ramas se publican con el historial completo; para nuevas mejoras se pueden crear ramas específicas desde develop.
 
 Al terminar cada incremento: revisar `git diff`, agregar únicamente archivos pertinentes, hacer commit y subir la rama. Integrar a develop tras verificar; al terminar, integrar develop a main. Conservar historial de al menos diez commits lógicos en GitHub: evitar squash que reduzca el total por debajo de diez. Subir main, develop y al menos una feature. Guardar evidencia con `git log --all --graph --oneline` y el enlace de GitHub.
 
-## Decisiones pendientes
+## Entrega
 
-Confirmar si se mantiene el dominio propuesto y conocer la fecha límite para convertir las horas en calendario. Crear el repositorio GitHub y comprobar acceso del docente. El entorno local puede avanzar sin esas decisiones.
+Dominio implementado: proyectos y tareas. Repositorio público: https://github.com/adovegav/proyecta-proyecto-final. Consultar la guía final, la matriz de verificación y los resultados de pruebas. Los ZIP y el video se reúnen en `artifacts/entrega`.

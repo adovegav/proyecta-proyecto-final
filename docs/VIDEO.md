@@ -1,6 +1,6 @@
 # Guion del video
 
-Duración orientativa: 10–15 minutos, ajustable a lo que indique el docente. No se especificó duración obligatoria.
+Video generado: `artifacts/entrega/demostracion-proyecta.mp4`. Incluye instalación real en copia limpia y las seis pantallas con explicaciones escritas en español, sin narración de voz. El índice `VIDEO_CAPITULOS.json` registra los tiempos. No se especificó duración obligatoria.
 
 1. Presentación: objetivo, React + API REST, dos proyectos y relación proyecto/tareas.
 2. Mostrar repositorio GitHub, ramas y commits. Mostrar carpetas y archivos de ejemplo sin exponer secretos.
