@@ -1,0 +1,15 @@
+{
+  "name": "proyecta-verificacion",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:ui": "node ui-test.mjs",
+    "video": "node video.mjs",
+    "format": "prettier --write ../frontend/src ../backend/src ../backend/scripts ../backend/test"
+  },
+  "devDependencies": {
+    "playwright": "1.65.1",
+    "ffmpeg-static": "5.3.0",
+    "prettier": "3.10.1"
+  }
+}
